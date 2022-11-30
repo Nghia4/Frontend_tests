@@ -1,23 +1,24 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import express from 'express';
+import { StaticRouter } from 'react-router-dom/server';
 import App from '../client/components/App';
-import { StaticRouter } from "react-router-dom/server";
 
 const app = express();
 const port = 3000;
 
 app.get('*', (req, res) => {
-    const jsx = ReactDOMServer.renderToString( // [A]
-    <StaticRouter location={req.url}>
-        <App />
-    </StaticRouter>
-    ); 
+	const jsx = ReactDOMServer.renderToString(
+		// [A]
+		<StaticRouter location={req.url}>
+			<App />
+		</StaticRouter>
+	);
 
-    const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`; // [B]
-    const clientBundleStyle = `<link rel="stylesheet" href="http://localhost:8080/styles/bundle.css">`; // [B]
+	const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`; // [B]
+	const clientBundleStyle = `<link rel="stylesheet" href="http://localhost:8080/styles/bundle.css">`; // [B]
 
-    res.send(`
+	res.send(`
         <!DOCTYPE html>
         <html lang="en">
             <head>
@@ -35,5 +36,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`App listening on http://localhost:${port}`);
+	console.log(`App listening on http://localhost:${port}`);
 });
