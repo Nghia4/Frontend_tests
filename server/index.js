@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import express from 'express';
 import App from '../client/components/App';
+import { StaticRouter } from "react-router-dom/server";
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     const jsx = ReactDOMServer.renderToString( // [A]
+    <StaticRouter location={req.url}>
         <App />
+    </StaticRouter>
     ); 
 
     const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`; // [B]

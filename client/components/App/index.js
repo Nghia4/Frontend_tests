@@ -1,9 +1,16 @@
 import React from 'react';
 import style from './style.less'
+import { Routes, Route } from 'react-router-dom'
+import { rootStore } from '../../../stores/rootstore.js';
+import { Provider } from 'mobx-react';
+import Router from '../../../routers';
 
-const App = () => (<>
-    <div className={style.myapp}>Hello World</div>
-    {/* <button onClick={e => alert('Hello You!')}>Say Hello Back!</button> */}
-</>);
-
-export default App; 
+export default function App() {
+    return (
+        <Provider {...rootStore}>
+        
+          <Router />
+        
+      </Provider>    
+    );
+  }
