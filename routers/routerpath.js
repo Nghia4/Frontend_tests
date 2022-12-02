@@ -2,9 +2,10 @@ const routerPath = {
 	home: {
 		value: '/',
 	},
-	about: {
-		value: '/about',
+	calculator: {
+		value: '/calculator',
 	},
+
 };
 
 export default routerPath;
