@@ -1,9 +1,16 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button.js';
 import Row from '../../components/Row/Row.js';
 
-
 function Calculator() {
+	const [screenNumber, setScreenNumber] = useState('0');
+
+
+	function inputNumber(event) {
+		const number = event.target.innerText
+	}
+
 	return (
 		<div className="calculator-container">
 			<div className="calculator-table">
@@ -14,7 +21,18 @@ function Calculator() {
 						<div className="icon-green"></div>
 					</div>
 					<div className="calculator-screen-display">
-						<div className="screen-display-number">0</div>
+						<div className="screen-display-number">
+							{screenNumber.split('').map((number, index) => {
+								return (
+									<input
+										className="display-number"
+										value={number}
+										key={index}
+										readOnly
+									/>
+								);
+							})}
+						</div>
 					</div>
 				</div>
 				<div className="calculator-button">
@@ -25,21 +43,21 @@ function Calculator() {
 						<Button className={'operation-button'} number={'/'}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
-						<Button className={'number-button'} number={'7'}></Button>
-						<Button className={'number-button'} number={'8'}></Button>
-						<Button className={'number-button'} number={'9'}></Button>
+						<Button className={'number-button'} number={'7'} onClick={inputNumber}></Button>
+						<Button className={'number-button'} number={'8'}onClick={inputNumber}></Button>
+						<Button className={'number-button'} number={'9'}onClick={inputNumber}></Button>
 						<Button className={'operation-button'} number={'x'}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
-						<Button className={'number-button'} number={'4'}></Button>
-						<Button className={'number-button'} number={'5'}></Button>
-						<Button className={'number-button'} number={'6'}></Button>
+						<Button className={'number-button'} number={'4'} onClick={inputNumber}></Button>
+						<Button className={'number-button'} number={'5'} onClick={inputNumber}></Button>
+						<Button className={'number-button'} number={'6'} onClick={inputNumber}></Button>
 						<Button className={'operation-button'} number={'-'}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
-						<Button className={'number-button'} number={'1'}></Button>
-						<Button className={'number-button'} number={'2'}></Button>
-						<Button className={'number-button'} number={'3'}></Button>
+						<Button className={'number-button'} number={'1'} onClick={inputNumber}></Button>
+						<Button className={'number-button'} number={'2'} onClick={inputNumber}></Button>
+						<Button className={'number-button'} number={'3'} onClick={inputNumber}></Button>
 						<Button className={'operation-button'} number={'+'}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
