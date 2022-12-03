@@ -2,17 +2,72 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button.js';
 import Row from '../../components/Row/Row.js';
+import { replaceNumber } from '../../utils/logic.js';
+
 
 function Calculator() {
+	
 	const [screenNumber, setScreenNumber] = useState('0');
+	const [expression, setExpression] = useState("");
+	const [operator, setOperator] = useState("");
 
-
-	function inputNumber(event) {
+	function inputNumber (event) {
 		const number = event.target.innerText
-		console.log(number)
-		setScreenNumber(number)
-		
+
+		if (expression === "") {
+            if (number === "0") {
+                return 
+            }
+
+            setScreenNumber(number);
+            
+            if (operator === "-" && number !== "0") {
+                setExpression("-" + number);
+            } else {
+                setExpression(number);
+            }
+        }
+       
+        if (expression !== "") {
+            if (operator !== "") {
+                setScreenNumber(number);
+            } else {
+                setScreenNumber(screenNumber + number);
+            }
+
+            setExpression(expression + operator + number);
+            setOperator("");
+        }
+	
 	}
+	
+	
+	function resetToZero (event) {
+		event.target.innerText = "AC"
+		setScreenNumber("0")
+		setExpression("");
+        setOperator("");
+	}
+
+	function operationCalculator (event) {
+		setOperator(event.target.innerText)
+	}
+
+	function calculateExpression () {
+        const formatExpression = expression.replace(/^0+/, "").replace(/x/g, "*");
+
+        setOperator("");
+
+        if (formatExpression === "") {
+            setScreenNumber("0");
+            return;
+        }
+
+        const result = eval(formatExpression).toString();
+        
+        setScreenNumber(result);
+        setExpression(result === "0" ? "" : result);
+    }
 
 	return (
 		<div className="calculator-container">
@@ -40,33 +95,33 @@ function Calculator() {
 				</div>
 				<div className="calculator-button">
 					<Row className={'calculator-button-row'}>
-						<Button className={'special-button'} number={'AC'}></Button>
+						<Button className={'special-button'} number={"AC"} onClick={resetToZero}></Button>
 						<Button className={'special-button'} number={'+/-'}></Button>
 						<Button className={'special-button'} number={'%'}></Button>
-						<Button className={'operation-button'} number={'/'}></Button>
+						<Button className={'operation-button'} number={'/'} active={operator === "/"} onClick={operationCalculator}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
 						<Button className={'number-button'} number={'7'} onClick={inputNumber}></Button>
 						<Button className={'number-button'} number={'8'}onClick={inputNumber}></Button>
 						<Button className={'number-button'} number={'9'}onClick={inputNumber}></Button>
-						<Button className={'operation-button'} number={'x'}></Button>
+						<Button className={'operation-button'} number={'x'} active={operator === "x"} onClick={operationCalculator}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
 						<Button className={'number-button'} number={'4'} onClick={inputNumber}></Button>
 						<Button className={'number-button'} number={'5'} onClick={inputNumber}></Button>
 						<Button className={'number-button'} number={'6'} onClick={inputNumber}></Button>
-						<Button className={'operation-button'} number={'-'}></Button>
+						<Button className={'operation-button'} number={'-'} active={operator === "-"} onClick={operationCalculator}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
 						<Button className={'number-button'} number={'1'} onClick={inputNumber}></Button>
 						<Button className={'number-button'} number={'2'} onClick={inputNumber}></Button>
 						<Button className={'number-button'} number={'3'} onClick={inputNumber}></Button>
-						<Button className={'operation-button'} number={'+'}></Button>
+						<Button className={'operation-button'} number={'+'} active={operator === "+"} onClick={operationCalculator}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
-						<Button className={'number-button zero'} number={'0'}></Button>
-						<Button className={'special-button comma'} number={'.'}></Button>
-						<Button className={'equal-button'} number={'='}></Button>
+						<Button className={'number-button zero'} number={'0'} onClick={inputNumber}></Button>
+						<Button className={'special-button comma'} number={','}></Button>
+						<Button className={'equal-button'} number={'='} onClick={calculateExpression}></Button>
 					</Row>
 				</div>
 			</div>
