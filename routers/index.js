@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useRoutes } from 'react-router-dom';
 import React from 'react';
 import routerPath from './routerPath.js';
 import '../client/components/App/style.scss';

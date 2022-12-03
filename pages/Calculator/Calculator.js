@@ -9,6 +9,9 @@ function Calculator() {
 
 	function inputNumber(event) {
 		const number = event.target.innerText
+		console.log(number)
+		setScreenNumber(number)
+		
 	}
 
 	return (
