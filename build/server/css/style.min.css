@@ -141,7 +141,9 @@
   background-color: #847d7d;
 }
 
-.number-button:hover, .comma:hover, .special-button:hover {
+.number-button:hover,
+.comma:hover,
+.special-button:hover {
   background-color: #dac8c8;
 }
 
@@ -150,7 +152,7 @@
 }
 
 .operation-button:hover {
-  background-color: rgb(180, 118, 131);
+  background-color: #f3cd9e;
 }
 
 .myapp {

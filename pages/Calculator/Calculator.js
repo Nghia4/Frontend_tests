@@ -2,7 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button.js';
 import Row from '../../components/Row/Row.js';
-import { replaceNumber } from '../../utils/utility.js';
+import {
+	replaceNumber,
+	storeExpressionToHistory,
+} from '../../utils/utility.js';
 
 function Calculator() {
 	const [screenNumber, setScreenNumber] = useState('0');
@@ -11,22 +14,21 @@ function Calculator() {
 	const [percent, setPercent] = useState('');
 	const [replaceNumberIndex, setReplaceNumberIndex] = useState(-1);
 
-
 	// screenNumber become normal when click outside
 	useEffect(() => {
-        document.addEventListener("mousedown", (event) => {
-            if (!event.target.classList.contains("number-button")) {
-                setReplaceNumberIndex(-1);
-            }
-        })
+		document.addEventListener('mousedown', (event) => {
+			if (!event.target.classList.contains('number-button')) {
+				setReplaceNumberIndex(-1);
+			}
+		});
 		return () => {
-            document.removeEventListener("mousedown", (event) => {
-                if (!event.target.classList.contains("number-button")) {
-                    setReplaceNumberIndex(-1);
-                }
-            })
-        }
-    }, []);
+			document.removeEventListener('mousedown', (event) => {
+				if (!event.target.classList.contains('number-button')) {
+					setReplaceNumberIndex(-1);
+				}
+			});
+		};
+	}, []);
 
 	function inputNumber(event) {
 		const number = event.target.innerText;
@@ -105,6 +107,7 @@ function Calculator() {
 
 		setScreenNumber(result);
 		setExpression(result === '0' ? '' : result);
+		storeExpressionToHistory(formatExpression + '=' + result);
 	}
 
 	function handleScreenClick(index) {

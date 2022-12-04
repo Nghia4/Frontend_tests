@@ -121,15 +121,13 @@
 	grid-column: 1/3;
 }
 
-
-.equal-button  {
+.equal-button {
 	background-color: #fd9e2b;
 }
 
 .equal-button:hover {
-    background-color: salmon
+	background-color: salmon;
 }
-
 
 .special-button {
 	background-color: #6b6364;
@@ -140,13 +138,15 @@
 	background-color: #847d7d;
 }
 
-.number-button:hover, .comma:hover, .special-button:hover {
-    background-color: #dac8c8;
+.number-button:hover,
+.comma:hover,
+.special-button:hover {
+	background-color: #dac8c8;
 }
 
 .operation-button {
-    background-color: #fd9e2b ;
+	background-color: #fd9e2b;
 }
 .operation-button:hover {
-    background-color: rgb(180, 118, 131);
+	background-color: #f3cd9e;
 }
