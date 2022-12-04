@@ -5,6 +5,9 @@ const routerPath = {
 	calculator: {
 		value: '/calculator',
 	},
+	history: {
+		value: '/history',
+	},
 };
 
 export default routerPath;

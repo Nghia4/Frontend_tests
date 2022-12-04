@@ -155,6 +155,36 @@
   background-color: #f3cd9e;
 }
 
+.history-container {
+  display: flex;
+  border: solid 1px black;
+  width: 20rem;
+  padding: 2rem;
+  margin: 3rem;
+  flex-direction: column;
+  background-color: rgb(240, 234, 227);
+  background-size: cover;
+}
+
+.history-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
+
+.history-list {
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 20px;
+  align-items: center;
+  background-color: bisque;
+  border: 1px solid white;
+}
+
 .myapp {
   color: rgb(156, 32, 32);
 }
@@ -163,5 +193,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: rgb(247, 245, 243);
 }
