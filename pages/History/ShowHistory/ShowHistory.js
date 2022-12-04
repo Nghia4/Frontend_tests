@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import CalculateLine from '../../../components/CalculateLine/CalculateLine.js';
+import CalculateLine from '../../../components/CalculateLine/Calculateline.js';
 
 function ShowHistory() {
 	const [history, setHistory] = useState([]);
