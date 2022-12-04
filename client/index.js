@@ -4,10 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
 
 window.addEventListener('DOMContentLoaded', () => {
-	
 	ReactDOM.hydrate(
-	<BrowserRouter>
-	<App />
-	</BrowserRouter>, 
-	document.getElementById('ssr-app'));
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>,
+		document.getElementById('ssr-app')
+	);
 });
