@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button.js';
 import Row from '../../components/Row/Row.js';
-import { replaceNumber } from '../../utils/logic.js';
+import { replaceNumber } from '../../utils/utility.js';
 
 
 function Calculator() {
@@ -10,6 +10,8 @@ function Calculator() {
 	const [screenNumber, setScreenNumber] = useState('0');
 	const [expression, setExpression] = useState("");
 	const [operator, setOperator] = useState("");
+	const [percent, setPercent] = useState("")
+	const [replaceNumberIndex, setReplaceNumberIndex] = useState(-1)
 
 	function inputNumber (event) {
 		const number = event.target.innerText
@@ -38,7 +40,18 @@ function Calculator() {
             setExpression(expression + operator + number);
             setOperator("");
         }
-	
+		
+		if (replaceNumberIndex !== -1) {
+            const newInput = replaceNumber(screenNumber, replaceNumberIndex, number);
+            const newExpression = replaceNumber(expression, expression.length
+                                                    - screenNumber.length
+                                                    + replaceNumberIndex, number);
+            setScreenNumber(newInput);
+            setExpression(newExpression);
+            setReplaceNumberIndex(-1);
+            return;
+        }
+
 	}
 	
 	
@@ -69,6 +82,12 @@ function Calculator() {
         setExpression(result === "0" ? "" : result);
     }
 
+	function handleScreenClick (index) {
+		setOperator("");
+		setReplaceNumberIndex(index)
+	}
+	
+
 	return (
 		<div className="calculator-container">
 			<div className="calculator-table">
@@ -87,6 +106,7 @@ function Calculator() {
 										value={number}
 										key={index}
 										readOnly
+										onClick={() => handleScreenClick(index)}
 									/>
 								);
 							})}
@@ -97,7 +117,7 @@ function Calculator() {
 					<Row className={'calculator-button-row'}>
 						<Button className={'special-button'} number={"AC"} onClick={resetToZero}></Button>
 						<Button className={'special-button'} number={'+/-'}></Button>
-						<Button className={'special-button'} number={'%'}></Button>
+						<Button className={'special-button'} number={'%'} active={percent === "%"}></Button>
 						<Button className={'operation-button'} number={'/'} active={operator === "/"} onClick={operationCalculator}></Button>
 					</Row>
 					<Row className={'calculator-button-row'}>
