@@ -3,6 +3,7 @@ import React from 'react';
 import routerPath from './routerPath.js';
 import '../client/components/App/style.scss';
 import Calculator from '../pages/Calculator/Calculator.js';
+import History from '../pages/History/History.js';
 
 function Router() {
 	return (
@@ -12,6 +13,7 @@ function Router() {
 				element={<div className="myapp">Hello World</div>}
 			/>
 			<Route path={routerPath.calculator.value} element={<Calculator />} />
+			<Route path={routerPath.history.value} element={<History />} />
 		</Routes>
 	);
 }

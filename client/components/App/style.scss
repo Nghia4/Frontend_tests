@@ -1,4 +1,5 @@
 @import '../../../pages//Calculator/calculator.style.scss';
+@import '../../../pages/History/history.style.scss';
 
 .myapp {
 	color: rgb(156, 32, 32);
@@ -8,5 +9,5 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
+	background-color: rgb(247, 245, 243);
 }
