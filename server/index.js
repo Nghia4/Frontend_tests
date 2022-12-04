@@ -14,8 +14,8 @@ app.get('*', (req, res) => {
 		</StaticRouter>
 	);
 
-	const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`; 
-	const clientBundleStyle = `<link rel="stylesheet" href="http://localhost:8080/styles/bundle.css">`; 
+	const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`;
+	const clientBundleStyle = `<link rel="stylesheet" href="http://localhost:8080/styles/bundle.css">`;
 
 	res.send(`
         <!DOCTYPE html>

@@ -5,7 +5,6 @@ const routerPath = {
 	calculator: {
 		value: '/calculator',
 	},
-
 };
 
 export default routerPath;

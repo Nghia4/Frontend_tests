@@ -4,21 +4,21 @@ const { merge } = require('webpack-merge');
 const sharedConfig = require('./webpack.shared.config.js');
 
 const config = {
-	target: 'node', 
+	target: 'node',
 
-	entry: './server/index.js', 
+	entry: './server/index.js',
 
 	output: {
 		path: path.join(__dirname, './build/server'),
 		filename: 'bundle.js',
 	},
 
-	externals: [webpackNodeExternals()], 
+	externals: [webpackNodeExternals()],
 
 	module: {
 		rules: [
 			{
-				test: /\.less$/, 
+				test: /\.less$/,
 				use: [
 					{
 						loader: 'css-loader',
@@ -36,4 +36,4 @@ const config = {
 	},
 };
 
-module.exports = merge(sharedConfig, config); 
+module.exports = merge(sharedConfig, config);

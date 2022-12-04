@@ -8,23 +8,23 @@ const clientPort = 8080;
 const config = {
 	target: 'web',
 
-	entry: './client/index.js', 
+	entry: './client/index.js',
 
 	output: {
-		path: path.join(__dirname, './build/client'), 
+		path: path.join(__dirname, './build/client'),
 		filename: 'scripts/bundle.js', // [B]
-		publicPath: `http://localhost:${clientPort}/`, 
+		publicPath: `http://localhost:${clientPort}/`,
 	},
 
 	devServer: {
-		port: clientPort, 
+		port: clientPort,
 		liveReload: true,
 	},
 
 	module: {
 		rules: [
 			{
-				test: /\.less$/, 
+				test: /\.less$/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
@@ -44,9 +44,9 @@ const config = {
 
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: 'styles/bundle.css', 
+			filename: 'styles/bundle.css',
 		}),
 	],
 };
 
-module.exports = merge(sharedConfig, config); 
+module.exports = merge(sharedConfig, config);
