@@ -13,8 +13,8 @@ function ShowHistory() {
 	}, []);
 
 	return (
-		<div className="history-container">
-			<div className="history-title">Calculator List</div>
+		<div className="history-container" data-testid="ShowHistory">
+			<div className="history-title" data-testid="content">Calculator List</div>
 			<div className="history-list">
 				{history.map((item, index) => {
 					return (

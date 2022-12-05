@@ -1,7 +1,7 @@
 .history-container {
 	display: flex;
 	border: solid 1px black;
-	width: 20rem;
+	width: 35rem;
 	padding: 2rem;
 	margin: 3rem;
 	flex-direction: column;
@@ -26,4 +26,9 @@
 	align-items: center;
 	background-color: bisque;
 	border: 1px solid white;
+	width:auto
+}
+
+.list {
+	width: fit-content;
 }

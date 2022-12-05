@@ -63,7 +63,8 @@
   font-size: 30px;
   justify-content: center;
   align-items: center;
-  font-weight: 700;
+  font-weight: 100;
+  font-size: 34px;
   border: solid 1px #676060;
 }
 
@@ -175,7 +176,7 @@
 .history-container {
   display: flex;
   border: solid 1px black;
-  width: 20rem;
+  width: 35rem;
   padding: 2rem;
   margin: 3rem;
   flex-direction: column;
@@ -200,6 +201,11 @@
   align-items: center;
   background-color: bisque;
   border: 1px solid white;
+  width: auto;
+}
+
+.list {
+  width: fit-content;
 }
 
 .myapp {
@@ -210,5 +216,4 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(247, 245, 243);
 }

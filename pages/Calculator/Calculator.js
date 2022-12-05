@@ -120,7 +120,7 @@ function Calculator() {
 	}
 
 	return (
-		<div className="calculator-container">
+		<div className="calculator-container" data-testid="Calculator">
 			<div className="calculator-table">
 				<div className="calculator-screen">
 					<div className="icon">

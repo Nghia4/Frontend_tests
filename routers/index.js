@@ -7,7 +7,7 @@ import History from '../pages/History/History.js';
 
 function Router() {
 	return (
-		<Routes>
+		<Routes data-testid="Router">
 			<Route
 				path={routerPath.home.value}
 				element={<div className="myapp">Hello World</div>}
