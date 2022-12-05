@@ -98,7 +98,7 @@ function Calculator() {
 	}
 
 	function calculateExpression() {
-		const formatExpression = expression.replace(/^0+/, '').replace(/x/g, '*');
+		const formatExpression = expression.replace(/^0+/, '').replace(/x/g, '*').replace(/÷/g, '/').replace(/–/g, '-')
 
 		setOperator('');
 
@@ -159,8 +159,8 @@ function Calculator() {
 						></Button>
 						<Button
 							className={'operation-button'}
-							number={'/'}
-							active={operator === '/'}
+							number={'÷'}
+							active={operator === '÷'}
 							onClick={operationCalculator}
 						></Button>
 					</Row>
@@ -205,8 +205,8 @@ function Calculator() {
 						></Button>
 						<Button
 							className={'operation-button'}
-							number={'-'}
-							active={operator === '-'}
+							number={'–'}
+							active={operator === '–'}
 							onClick={operationCalculator}
 						></Button>
 					</Row>

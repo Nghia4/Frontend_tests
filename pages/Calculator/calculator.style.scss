@@ -1,5 +1,5 @@
 .calculator-container {
-	width: 20rem;
+	width: 22rem;
 	padding: 2rem;
 	margin: 3rem;
 	border-radius: 1rem;
@@ -16,34 +16,37 @@
 .calculator-table {
 	background-color: #d6d6d6;
 	border-radius: 12px;
-	width: 340px;
+	width: 344px;
 	box-shadow: -10px -10px 15px rgb(129 129 129/ 50%),
 		10px 10px 15px rgb(0 0 0 / 50%);
 }
 
 .icon {
-	margin-top: 2px;
-	margin-left: 5px;
+	margin-top: 9px;
+	margin-left: 10px;
 	display: flex;
 	flex-direction: row;
-	gap: 10px;
+	gap: 11px;
 }
 .icon-red {
 	background: #fc625e;
-	border: 10px solid #fc625e;
+	border: 8px solid #fc625e;
 	border-radius: 50%;
+	height: 1px;
 }
 
 .icon-yellow {
 	background: #fcbb40;
-	border: 10px solid #fcbb40;
+	border: 8px solid #fcbb40;
 	border-radius: 50%;
+	height: 1px;
 }
 
 .icon-green {
 	background: #34c548;
-	border: 10px solid #34c548;
+	border: 8px solid #34c548;
 	border-radius: 50%;
+	height: 1px;
 }
 
 .number-button,
@@ -57,8 +60,14 @@
 	font-size: 30px;
 	justify-content: center;
 	align-items: center;
-	font-weight: 700;
+	font-weight: 100;
+    font-size: 34px;
 	border: solid 1px #676060;
+}
+
+.special-button {
+	font-weight: 500;
+    font-size: 25px;
 }
 
 .calculator-screen {
@@ -87,12 +96,16 @@
 
 .calculator-button {
 	width: 100%;
-	height: 100%;
+	height: 360px;
+}
+
+.operation-button {
+    font-size: 35px;
 }
 
 .calculator-button-row {
 	width: 100%;
-	height: 60px;
+	height: 72px;
 	margin-bottom: 0px;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
