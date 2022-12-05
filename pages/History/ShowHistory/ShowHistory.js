@@ -1,15 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useStores } from '../../../context/rootStoreContext.js';
+import { observer } from 'mobx-react';
 import CalculateLine from '../../../components/CalculateLine/Calculateline.js';
 
 function ShowHistory() {
-	const [history, setHistory] = useState([]);
+	const { historyStore } = useStores();
+	const { history } = historyStore
 
 	useEffect(() => {
-		const history = JSON.parse(localStorage.getItem('history'));
-		if (history) {
-			setHistory(history);
-		}
+		historyStore.getHistoryItem();
 	}, []);
 
 	return (
@@ -28,4 +28,4 @@ function ShowHistory() {
 	);
 }
 
-export default ShowHistory;
+export default observer(ShowHistory);

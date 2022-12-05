@@ -6,13 +6,17 @@ import {
 	replaceNumber,
 	storeExpressionToHistory,
 } from '../../utils/utility.js';
+import { observer } from 'mobx-react';
+import { useStores } from '../../context/rootStoreContext.js';
 
 function Calculator() {
 	const [screenNumber, setScreenNumber] = useState('0');
-	const [expression, setExpression] = useState('');
 	const [operator, setOperator] = useState('');
 	const [percent, setPercent] = useState('');
 	const [replaceNumberIndex, setReplaceNumberIndex] = useState(-1);
+
+	const { calculateStore } = useStores();
+	const { expression } = calculateStore
 
 	// screenNumber become normal when click outside
 	useEffect(() => {
@@ -41,20 +45,20 @@ function Calculator() {
 			setScreenNumber(number);
 
 			if (operator === '-' && number !== '0') {
-				setExpression('-' + number);
+				calculateStore.setExpression('-' + number);
 			} else {
-				setExpression(number);
+				calculateStore.setExpression(number);
 			}
 		}
 
 		if (expression !== '') {
 			if (operator !== '') {
 				setScreenNumber(number);
-			} else {
-				setScreenNumber(screenNumber + number);
+			}  else {
+				setScreenNumber(screenNumber + number)
 			}
 
-			setExpression(expression + operator + number);
+			calculateStore.setExpression(expression + operator + number);
 			setOperator('');
 		}
 
@@ -76,7 +80,7 @@ function Calculator() {
 				newExpression
 			);
 			setScreenNumber(newInput);
-			setExpression(newExpression);
+			calculateStore.setExpression(newExpression);
 			setReplaceNumberIndex(-1);
 			return;
 		}
@@ -85,7 +89,7 @@ function Calculator() {
 	function resetToZero(event) {
 		event.target.innerText = 'AC';
 		setScreenNumber('0');
-		setExpression('');
+		calculateStore.setExpression('');
 		setOperator('');
 	}
 
@@ -106,7 +110,7 @@ function Calculator() {
 		const result = eval(formatExpression).toString();
 
 		setScreenNumber(result);
-		setExpression(result === '0' ? '' : result);
+		calculateStore.setExpression(result === '0' ? '' : result);
 		storeExpressionToHistory(formatExpression + '=' + result);
 	}
 
@@ -248,4 +252,4 @@ function Calculator() {
 	);
 }
 
-export default Calculator;
+export default observer(Calculator);
